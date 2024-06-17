@@ -4,5 +4,5 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
     site: 'https://vlandivir.github.io',
-    base: '/vlandivir-astra-test',    
+    base: '/vlandivir-astro-test',    
 });
