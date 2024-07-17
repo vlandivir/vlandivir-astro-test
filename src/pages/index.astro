@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css'
+
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 ---
@@ -34,10 +36,13 @@ import Card from '../components/Card.astro';
 			</defs>
 		</svg>
 		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
+
+		<div>
+			<a href="/vlandivir-astro-test/">Home</a>
+			<a href="/vlandivir-astro-test/posts/post-20240716">Blog Post 20240716</a>
+			<a href="/vlandivir-astro-test/posts/post-20240717">Blog Post 20240717</a>
+		</div>
+
 		<ul role="list" class="link-card-grid">
 			<Card
 				href="https://docs.astro.build/"
@@ -60,40 +65,10 @@ import Card from '../components/Card.astro';
 				body="Come say hi to our amazing Discord community. ❤️"
 			/>
 		</ul>
-		<div>
-			<a href="/vlandivir-astro-test/">Home</a>
-			<a href="/vlandivir-astro-test/about/">About</a>
-			<a href="/vlandivir-astro-test/posts/post-20240716">Blog Post</a>
-		</div>
 	</main>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
 	.text-gradient {
 		background-image: var(--accent-gradient);
 		-webkit-background-clip: text;

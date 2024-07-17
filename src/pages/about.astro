@@ -1,13 +1,37 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import '../styles/global.css'
+
+const pageTitle = "About Me";
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const skillColor = "salmon";
 ---
 
-<Layout title="Welcome to Astro.">
+<style define:vars={{skillColor}}>
+    h1 {
+      color: purple;
+      font-size: 4rem;
+    }
+    .skill {
+      color: var(--skillColor);
+      font-weight: bold;
+    }
+</style>
+
+<div>
 	<main>
+		<h1>{pageTitle}</h1>
+
 		<a href="/vlandivir-astro-test/">Home</a>
-		<a href="/vlandivir-astro-test/about/">About</a>			
+		<a href="/vlandivir-astro-test/about/">About</a>
+
+		<ul>
+			{skills.map((skill) => <li class="skill">{skill}</li>)}
+		</ul>
+
 	</main>
-</Layout>
+</div>
 
 <style>
 	main {
