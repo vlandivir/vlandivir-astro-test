@@ -1,4 +1,6 @@
 ---
+import Navigation from '../components/Navigation.astro';
+import Layout from '../layouts/Layout.astro';
 import '../styles/global.css'
 
 const pageTitle = "About Me";
@@ -19,19 +21,17 @@ const skillColor = "salmon";
     }
 </style>
 
-<div>
+<Layout title="About">
 	<main>
-		<h1>{pageTitle}</h1>
+        <Navigation />
 
-		<a href="/vlandivir-astro-test/">Home</a>
-		<a href="/vlandivir-astro-test/about/">About</a>
+        <h1><span class="astro-gradient">{pageTitle}</span></h1>
 
 		<ul>
 			{skills.map((skill) => <li class="skill">{skill}</li>)}
 		</ul>
-
 	</main>
-</div>
+</Layout>
 
 <style>
 	main {

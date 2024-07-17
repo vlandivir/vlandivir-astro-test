@@ -1,0 +1,20 @@
+---
+const { pathname } = Astro.url
+---
+
+<style>
+    a {
+        padding: 2px 4px;
+        color: white;
+        background-color: #4c1d95;
+        text-decoration: none;
+    }
+</style>
+
+<div>{ pathname }<div>
+<div>
+    <a href="/vlandivir-astro-test/">Home</a>
+    <a href="/vlandivir-astro-test/about/">About</a>
+    <a href="/vlandivir-astro-test/posts/post-20240716">Blog Post 20240716</a>
+    <a href="/vlandivir-astro-test/posts/post-20240717">Blog Post 20240717</a>
+</div>
