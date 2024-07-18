@@ -7,7 +7,6 @@ const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', da
 const pubDate = new Date(frontmatter.pubDate).toLocaleDateString("en-GB", options);
 ---
 <BlogLayout title={frontmatter.title}>
-    <p>Written by {frontmatter.author}</p>
     <p>Published on: {pubDate}</p>
     <slot />
 </BlogLayout>
