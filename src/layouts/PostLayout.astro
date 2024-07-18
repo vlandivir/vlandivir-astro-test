@@ -1,0 +1,13 @@
+---
+import BlogLayout from './BlogLayout.astro';
+
+const { frontmatter } = Astro.props;
+
+const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long', };
+const pubDate = new Date(frontmatter.pubDate).toLocaleDateString("en-GB", options);
+---
+<BlogLayout title={frontmatter.title}>
+    <p>Written by {frontmatter.author}</p>
+    <p>Published on: {pubDate}</p>
+    <slot />
+</BlogLayout>
