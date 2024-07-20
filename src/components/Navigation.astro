@@ -2,6 +2,9 @@
 const { pathname } = Astro.url;
 const allPosts = await Astro.glob('../pages/posts/*.md');
 const index = allPosts.findIndex(p => pathname.startsWith(p.url || '/lost-page'))
+const currentPost = allPosts[index];
+const monthDay = currentPost.frontmatter.pubDate.substring(5, 10);
+const dayPosts = allPosts.filter(p => p.frontmatter.pubDate.substring(5, 10) === monthDay);
 ---
 
 <style>
@@ -10,6 +13,7 @@ const index = allPosts.findIndex(p => pathname.startsWith(p.url || '/lost-page')
         color: white;
         background-color: #4c1d95;
         text-decoration: none;
+        margin-right: 4px;
     }
 </style>
 
@@ -18,6 +22,7 @@ const index = allPosts.findIndex(p => pathname.startsWith(p.url || '/lost-page')
     <a href="/vlandivir-astro-test/">Home</a>
     <a href="/vlandivir-astro-test/about/">About</a>
 </div>
+
 <div style={{marginTop: '16px'}}>
     {
         allPosts.map((post, idx) => {
@@ -28,7 +33,16 @@ const index = allPosts.findIndex(p => pathname.startsWith(p.url || '/lost-page')
             const pubDate = post.frontmatter.pubDate.substring(0, 10).replaceAll('-', '.');
 
             if (idx === index) {
-                return <div>{pubDate} {post.frontmatter.title}</div>
+                return (
+                    <div style={{padding: '8px 0px 8px 36px'}}>
+                        {
+                            dayPosts.map((post) => {
+                                return <a href={post.url}>{post.frontmatter.pubDate.substring(0, 4)}</a>
+                            })
+                        }
+                        {pubDate} {post.frontmatter.title}
+                    </div>
+                )
             }
 
             if (idx === allPosts.length - 1) {
