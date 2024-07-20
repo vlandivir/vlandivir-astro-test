@@ -1,7 +1,7 @@
 ---
 const { pathname } = Astro.url;
 const allPosts = await Astro.glob('../pages/posts/*.md');
-const index = allPosts.findIndex(p => p.url === pathname)
+const index = allPosts.findIndex(p => pathname.startsWith(p.url || '/lost-page'))
 ---
 
 <style>
@@ -13,7 +13,7 @@ const index = allPosts.findIndex(p => p.url === pathname)
     }
 </style>
 
-<div>{ pathname }<div>
+<div>{pathname}<div>
 <div>
     <a href="/vlandivir-astro-test/">Home</a>
     <a href="/vlandivir-astro-test/about/">About</a>
