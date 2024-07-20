@@ -31,6 +31,14 @@ const index = allPosts.findIndex(p => p.url === pathname)
                 return <div>{pubDate} {post.frontmatter.title}</div>
             }
 
+            if (idx === allPosts.length - 1) {
+                return (
+                    <div style={{borderTop: '1px dashed white', height: '2px'}}></div>
+                    <div>
+                        <a href={post.url}>{pubDate} {post.frontmatter.title}</a>
+                    </div>
+                )
+            }
 
             return (
                 <div>
