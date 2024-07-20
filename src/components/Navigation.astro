@@ -3,7 +3,7 @@ const { pathname } = Astro.url;
 const allPosts = await Astro.glob('../pages/posts/*.md');
 const index = allPosts.findIndex(p => pathname.startsWith(p.url || '/lost-page'))
 const currentPost = allPosts[index];
-const monthDay = currentPost.frontmatter.pubDate.substring(5, 10);
+const monthDay = currentPost ? currentPost.frontmatter.pubDate.substring(5, 10) : '00.00';
 const dayPosts = allPosts.filter(p => p.frontmatter.pubDate.substring(5, 10) === monthDay);
 ---
 
