@@ -1,5 +1,7 @@
 ---
-const { pathname } = Astro.url
+const { pathname } = Astro.url;
+const allPosts = await Astro.glob('../pages/posts/*.md');
+const index = allPosts.findIndex(p => p.url === pathname)
 ---
 
 <style>
@@ -15,6 +17,26 @@ const { pathname } = Astro.url
 <div>
     <a href="/vlandivir-astro-test/">Home</a>
     <a href="/vlandivir-astro-test/about/">About</a>
-    <a href="/vlandivir-astro-test/posts/post-20240716">Blog Post 20240716</a>
-    <a href="/vlandivir-astro-test/posts/post-20240717">Blog Post 20240717</a>
+</div>
+<div style={{marginTop: '16px'}}>
+    {
+        allPosts.map((post, idx) => {
+            if (Math.abs(idx - index) > 2 && idx < allPosts.length - 1) {
+                return;
+            }
+
+            const pubDate = post.frontmatter.pubDate.substring(0, 10).replaceAll('-', '.');
+
+            if (idx === index) {
+                return <div>{pubDate} {post.frontmatter.title}</div>
+            }
+
+
+            return (
+                <div>
+                    <a href={post.url}>{pubDate} {post.frontmatter.title}</a>
+                </div>
+            )
+        })
+    }
 </div>
