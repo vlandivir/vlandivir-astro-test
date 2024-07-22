@@ -8,5 +8,13 @@ const pubDate = new Date(frontmatter.pubDate).toLocaleDateString("en-GB", option
 ---
 <BlogLayout title={frontmatter.title}>
     <p>Published on: {pubDate}</p>
-    <slot />
+    <div class="blog-post">
+        <slot />
+    </div>
 </BlogLayout>
+
+<style is:inline>
+    .blog-post p img {
+        max-width: 800px;
+    }
+</style>
